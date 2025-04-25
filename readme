@@ -1,5 +1,4 @@
 buat venv
-<br>
 python -m venv venv
 <br>
 aktifkan venv
