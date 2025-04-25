@@ -1,0 +1,15 @@
+buat venv
+<br>
+python -m venv venv
+<br>
+aktifkan venv
+<br>
+venv\Scripts\activate
+<br>
+matikan venv
+<br>
+deactivate
+<br>
+setelah itu jalankan perintah 
+<br>
+pip install -r requirements.txt
