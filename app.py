@@ -1,11 +1,13 @@
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
+import os
 
 app = Flask(__name__)
 
 # Load model
-model = joblib.load('model_decision_tree_air.pkl')
+basedir = os.path.abspath(os.path.dirname(__file__))
+model = joblib.load(os.path.join(basedir, 'model_decision_tree_air.pkl'))
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -25,7 +27,7 @@ def predict():
     elif prediction == 1:
         hasil = 'Buruk'
     elif prediction == 2:
-        hasil = 'Sedang'
+        hasil = 'Optimal'
     else:
         hasil = 'Tidak Diketahui'
     
@@ -33,4 +35,4 @@ def predict():
     return jsonify({'prediction': hasil})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5001)
